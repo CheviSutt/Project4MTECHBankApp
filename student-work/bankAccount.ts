@@ -1,6 +1,7 @@
 import { Account } from "../common/interfaces/Account";
 import { Transaction} from "../common/interfaces/Transaction";
 import { TransactionOrigin} from "../common/enums/TransactionOrigin";
+//First code attempt below
 
 // export class bankAccount implements Account {
 //     currentDate: Date;
@@ -120,9 +121,9 @@ export class bankAccount implements Account{
 
             //if day of month = 1, deposit monthly interest
             if (this.currentDate.getDate() === 1) {
-                //calculate interest based off rate, truncate to two decimals
-                let deposit = this.balance * rate / 12;
-                this.depositMoney(deposit, "Monthly Interest");
+                let deposit = this.balance * rate / 12;//calculate interest based off rate
+                let roundedDeposit = Math.round(deposit *100) / 100;//rounds to two decimals
+                this.depositMoney(roundedDeposit, "Monthly Interest");
             }
         }
     }

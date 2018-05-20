@@ -16,6 +16,7 @@ export class SavingsAccount extends bankAccount {
     withdrawMoney(amount: number, description: string, transactionOrigin: TransactionOrigin): Transaction {
 
         //new attempt here
+
         // let monthCheck = this.currentDate.getMonth();
         // if (monthCheck === this.checkDate && this.withdrawals > 6){
         //     return {
@@ -52,11 +53,11 @@ export class SavingsAccount extends bankAccount {
     }
 
     advanceDate(days: number) {
-        //storing current month to watch for change
+        //storing current month to watch for month change
         let currMonth = this.currentDate.getMonth();
         super.calcInterest(days, .02);
 
-        //checking if the month has changed
+        //checking for month change
         if (this.currentDate.getMonth() !== currMonth) {
             this.withdrawals = 0;
         }
