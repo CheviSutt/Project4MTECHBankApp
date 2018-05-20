@@ -13,6 +13,7 @@ export class RetirementAccount extends bankAccount {
 
     withdrawMoney(amount: number, description: string, transactionOrigin: TransactionOrigin): Transaction {
         let earlyFee = new Date( 1958, 5, 15);
+        //a better method for age check: create month,day,year variable and set to "new Date(-60y, mv, dv)"
 
         if(this.accountHolderBirthday < earlyFee) { //I want to merge this line in w other if else.
             return {
@@ -51,5 +52,6 @@ export class RetirementAccount extends bankAccount {
     }
     advanceDate(days){
         super.calcInterest(days, .03);
+
     }
  }
