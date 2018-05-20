@@ -4,9 +4,9 @@ import {Transaction} from "../common/interfaces/Transaction";
 import {TransactionOrigin} from "../common/enums/TransactionOrigin";
 
 export class RetirementAccount extends bankAccount {
-    constructor(currentDate: Date, accountHolderBirthday: Date) {
-        super();
-        this.currentDate = currentDate;
+    constructor(currentdate, accountHolderBirthday) {
+        super(currentdate);
+        //this.currentDate = currentDate;
         this.accountHolderBirthday = accountHolderBirthday;
         this.balance = 100000;
     }
@@ -48,5 +48,8 @@ export class RetirementAccount extends bankAccount {
                 description: ""
             };
         }
+    }
+    advanceDate(days){
+        super.calcInterest(days, .03);
     }
  }

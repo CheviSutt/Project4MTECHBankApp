@@ -3,13 +3,14 @@ import {Transaction} from "../common/interfaces/Transaction";
 import {TransactionOrigin} from "../common/enums/TransactionOrigin";
 
 export class SavingsAccount extends bankAccount {
-    withdrawals = 0;
-    checkDate = new Date().getMonth();
+    withdrawals: number = 0;
+    //checkDate = new Date().getMonth();
 
-    constructor(currentDate: Date) {
-        super();
-        this.currentDate = currentDate;
+    constructor(currentdate) {
+        super(currentdate);
+        //this.currentDate = currentDate;
         this.balance = 10000;
+
     }
 
     withdrawMoney(amount: number, description: string, transactionOrigin: TransactionOrigin): Transaction {
@@ -50,32 +51,15 @@ export class SavingsAccount extends bankAccount {
         }
     }
 
-    // advanceDate(days: number) {
-    //     //storing current month to watch for change
-    //     let currMonth = this.currentDate.getMonth();
-    //     //super.calcInterest(days, .02);
-    //
-    //     //checking if the month has changed
-    //     if(this.currentDate.getMonth() !== currMonth){
-    //         this.withdrawals = 0;
-    //         }
-    // }
+    advanceDate(days: number) {
+        //storing current month to watch for change
+        let currMonth = this.currentDate.getMonth();
+        super.calcInterest(days, .02);
 
-    //experiment code
-    // let remoteTrans = new Date().getMonth();
-    // let monthCheck = this.currentDate.getMonth();
-    //
-    // if (monthCheck && remoteTrans === this.currentDate.getMonth() && this.withdrawals < 6) {
-    //     return {
-    //         success: false,
-    //         amount: amount,
-    //         resultBalance: this.balance,
-    //         transactionDate: this.currentDate,
-    //         errorMessage: "",
-    //         transactionOrigin: transactionOrigin,
-    //         description: ""
-    //     };
-    // }
-
+        //checking if the month has changed
+        if (this.currentDate.getMonth() !== currMonth) {
+            this.withdrawals = 0;
+        }
+    }
 }
 

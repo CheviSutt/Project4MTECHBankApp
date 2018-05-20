@@ -1,11 +1,12 @@
 import {bankAccount} from "./bankAccount";
+import {AccountType} from "../common/enums/AccountType";
 import {Transaction} from "../common/interfaces/Transaction";
 import {TransactionOrigin} from "../common/enums/TransactionOrigin";
 
 export class CheckingAccount extends bankAccount {
-    constructor(currentDate: Date) {
-        super();
-        this.currentDate = currentDate;
+    constructor(currentdate) {
+        super(currentdate);
+        //this.currentDate = currentDate;
         this.balance = 1000;
     }
 
@@ -23,5 +24,7 @@ export class CheckingAccount extends bankAccount {
     //         };
     //     }
     // }
-
+    advanceDate(days){
+        super.calcInterest(days, .01);
+    }
 }
